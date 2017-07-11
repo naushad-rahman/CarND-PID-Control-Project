@@ -48,7 +48,7 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-  pid.Init(0.11,0.011,0);
+   pid.Init(0.11,0.00000011,0.11);
 
 //  cout << "MINIMUM value " << fmin(-1.1, -1.0) << "\r\n";
 
@@ -95,7 +95,7 @@ int main()
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
-          msgJson["throttle"] = 0.1;
+          msgJson["throttle"] = 0.15;
           auto msg = "42[\"steer\"," + msgJson.dump() + "]";
           std::cout << msg << std::endl;
           (ws).send(msg.data(), msg.length(), uWS::OpCode::TEXT);
@@ -119,7 +119,7 @@ int main()
   });
 
   int port = 4567;
-  if (h.listen("0.0.0.0", port))
+  if (h.listen(port))
   {
     std::cout << "Listening to port " << port << std::endl;
   }
