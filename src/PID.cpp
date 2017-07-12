@@ -1,4 +1,5 @@
 #include "PID.h"
+#include <iostream>
 
 using namespace std;
 
@@ -26,8 +27,10 @@ void PID::UpdateError(double cte) {
 	i_error += cte;
 
 }
+
 double PID::TotalError() {
+
+	cout <<"p_error="<<p_error << "i_error "<<i_error<<"d_error" <<d_error <<"\n";
 	double total_error = Kp * p_error + Ki * i_error + Kd * d_error;
 	return total_error;
 }
-
