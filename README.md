@@ -1,7 +1,53 @@
 # CarND-Controls-PID
-Self-Driving Car Engineer Nanodegree Program
 
+Self-Driving Car Engineer Nanodegree Program
 ---
+
+## Project Write-Up
+Sucessfully able to complete PID controller Assignment  [https://youtu.be/GdSao8rqM0k]
+
+
+### Describe the effect each of the P, I, D components had in your implementation? 
+
+* P ( Proportional Controller ) 
+ 
+Proportial controller steer the steering angle proportial to error between reference position  and current position that is known as CTE ( cross Talk Error ) .
+Mathmatically it is given as = - Kp * CTE .
+
+Higher value of P will oscillates the car where as lower value will make system response sluggish . 
+
+
+* I  ( Integral Controller ) 
+
+with Only P controller we will always  have `Steady State error ` , So to remove this error we need Integal controller . 
+We Cannot have  only I controller  it have to be with P and PD .
+
+I Controller remove Steady state error , integrating the error ( CTE ) over time and reduce error . 
+
+
+Mathematically It is  =  (Cte(t)+ Cte(t-1) + Cte(t-2))* dt 
+
+
+
+* D ( Derivative Controller ) 
+
+Derivate Controller is used to controller the oscillation of the P controller , It is used for damping of the oscillation of controller . It is very Userful in curver path . 
+
+D controller Mathmatically = (Cte(t) - Cte(t-1))/dt 
+
+dt is small time between t and t-1 . 
+
+
+### Describe how the final hyperparameters were chosen?
+
+Intially , Manual Tunning is done 
+Approach is 
+* First Set P such that it will run the Car In straing line and at Center , Once that is done then D is added for Curve Paths .
+	Finally , I ( Controller ) is introduced to remove stead state Error .  
+	
+* An attempt was made to implement `twiddle.py` ,  However, since there is no easy way to reset/restart the simulation from an external program, this was not pursued any further  .
+
+
 
 ## Dependencies
 
